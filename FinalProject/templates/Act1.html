@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting Algorithm</title>
+    <!-- Fonts used -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: #a0beff;
+            font-family: "Roboto", sans-serif;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            height: auto;
+            overflow-x: hidden;
+        }
+
+        /* Start of Navigation bar */
+        .header {
+            background-color: #002229;
+            padding: 20px 40px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .PulseQuill-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .Name h2 {
+            color: #ffffff;
+            font-family: "Space Grotesk", sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            margin-right: 60px;
+        }
+
+        .Name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        /* End of Navigation bar */
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .logo {
+                margin: 10px 0;
+            }
+
+            .Name h2 {
+                font-size: 20px;
+            }
+        }
+
+        .results-flex {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .counts-section {
+            flex: 1;
+            min-width: 180px;
+            margin-left: 20px;
+        }
+
+        .lists-container {
+            display: flex;
+            flex: 2;
+        }
+
+        .student-list-section, .lab-list-section {
+            flex: 1;
+            min-width: 180px;
+            padding: 0 15px;
+        }
+
+        #A1-content {
+            background-color: #ffffff;
+            padding: 40px;
+            margin: 80px 30px 30px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            margin-top: 150px;
+            min-height: 400px;
+        }
+
+        .content-flex {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 40px;
+        }
+
+        .left-panel {
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .save-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 18px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .save-button:hover {
+            background-color: #1e7e34;
+        }
+
+        .start-button {
+            background-color: #0d64ba;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .start-button:hover {
+            background-color: #1393e8;
+        }
+
+        .back-link {
+            display: inline-block;
+            background-color: #003457;
+            color: #ffffff;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link:hover {
+            background-color: #105d91;
+        }
+
+        #A1-content h3 {
+            font-size: 22px;
+            margin-top: 30px;
+            color: #003366;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">PulseQuill</a>
+        <div class="Name">
+            <h2>Activity 1: Counting Algorithm</h2>
+        </div>
+    </header>
+    <section id="A1-content">
+        <!-- Buttons side by side -->
+        <div class="button-group">
+            <a href="{{ url_for('portfolio') }}" class="back-link">Back to Home</a>
+            <form method="POST" action="{{ url_for('activity1') }}">
+                <button type="submit" name="action" value="count" class="start-button">Start Counting</button>
+            </form>
+            <form method="POST" action="{{ url_for('activity1') }}">
+                <button type="submit" name="action" value="save" class="save-button">Save to CSV</button>
+            </form>
+        </div>
+    
+        {% if show_results %}
+        <div class="results-flex">
+            <!-- Counts on the left -->
+            <div class="counts-section">
+                <p><strong>Number of Males:</strong> {{ males }}</p>
+                <p><strong>Number of Females:</strong> {{ females }}</p>
+                <p><strong>Number of Computers:</strong> {{ computers }}</p>
+            </div>
+            <!-- Student list in the middle -->
+            <div class="student-list-section">
+                <h3>Student List</h3>
+                <ul>
+                    {% for student in students %}
+                    <li>{{ student }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Lab equipment list on the right -->
+            <div class="lab-list-section">
+                <h3>Lab Equipment List</h3>
+                <ul>
+                    {% for item in lab %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% else %}
+            <p style="margin-top:20px;">Click <b>Start Counting</b> to see the results!</p>
+        {% endif %}
+    </section>
+</body>
+</html>
+

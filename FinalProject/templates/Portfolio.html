@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
+        <!--Fonts used-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <header class="header"><br>
+            <a href="#" class="logo">PulseQuill</a>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#Home"><b>Home</b></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="Home">
+            <div class="home-content">
+                <h1><b>PulseQuill</b></h1><br>
+                <h3>PulseQuill is my portfolio for my 2nd year of College as a Computer Science student at the University of Perpetual 
+                    Help System DALTA in <br> Molino Campus. This contains all of my activities and assessments for Design, Analysis, and 
+                    Algorithm Technologies in laboratory <br> and lecture. Feel free to explore the complexity, yet amazing algorithms I have implemented.
+                    You may contact me through my socials below.
+                </h3><br>
+            </div>
+            <div class="contact-pic"> 
+                <button class="icon-btn">
+                    <img src="{{ url_for('static', filename='css/images/facebook.png') }}" alt="Facebook" width="40" height="40">
+                    <b>Facebook: Lerrica Torreno</b>
+                </button>
+                <button class="icon-btn">
+                    <img src="{{ url_for('static', filename='css/images/gmail.png') }}" alt="Gmail" width="40" height="40">
+                    <b>Gmail: Lerricatorreno007@gmail.com</b>
+                </button>
+                <button class="icon-btn">
+                    <img src="{{ url_for('static', filename='css/images/github.png') }}" alt="Github" width="40" height="40">
+                    <b><a href="https://github.com/Lerrica-Torreno">Github: Lerrica-Torreno</a></b>
+                </button>
+                <button class="icon-btn">
+                    <img src="{{ url_for('static', filename='css/images/linkedin.png') }}" alt="Linkedin" width="40" height="40">
+                    <b><a href="https://www.linkedin.com/in/lerrica-jeremy-torreno-555a462a9/">LinkedIn: Lerrica Jeremy Torreno</a></b>
+                </button>
+            </div>
+        </section>
+
+        <section id="Act-wrapper">
+            <div class="activity-box">
+                <div class="A1-content">
+                    <h2>Activity 1</h2>
+                    <p><b>Counting Algorithm</b></p><br>
+                    <p>The program counts males, females, and computers in a computer lab using a for loop, 
+                        converting uppercase entries to lowercase for accuracy, and printing final counts.</p>
+                </div>
+                <div class="Algo-content">
+                    <button id="Activity-1"><b><a href="{{ url_for('activity1') }}">View</a></b></button>
+                </div>
+            </div>
+        
+            <div class="activity-box">
+                <div class="A1-content">
+                    <h2>Activity 2</h2>
+                    <p><b>Even Number Filter</b></p><br>
+                    <p>The program calculates the first digit of a csv file by looping through the "Number1" 
+                        column, extracting the first digit, and printing the result.</p>
+                </div>
+                <div class="Algo-content">
+                    <button id="Activity-2"><b><a href="{{ url_for('activity2') }}">View</a></b></button>
+                </div>
+            </div>
+        
+            <div class="activity-box">
+                <div class="A1-content">
+                    <h2>Activity 3</h2>
+                    <p><b>Comb Sort Algorithm</b></p><br>
+                    <p>The program uses the comb sort algorithm to access the csv file dataset and prompts 
+                        the user to sort the "No of ratings" column in ascending or descending order</p>
+                </div>
+                <div class="Algo-content">
+                    <button id="Activity-3"><b><a href="{{ url_for('activity3') }}">View</a></b></button>
+                </div>
+            </div>
+        
+            <div class="activity-box">
+                <div class="A1-content">
+                    <h2>Activity 4</h2>
+                    <p><b>Ford-Fulkerson Algorithm</b></p><br>
+                    <p>The program uses the Ford-Fulkerson Algorithm to solve a flow problem for assigning study 
+                        hours based on student data, integrating data processing, visualization, and CSV export.</p>
+                </div>
+                <div class="Algo-content">
+                    <button id="Activity-4"><b><a href="{{ url_for('activity4') }}">View</a></b></button>
+                </div>
+            </div>
+        
+            <div class="activity-box">
+                <div class="A1-content">
+                    <h2>Activity 5</h2>
+                    <p><b>Chatbot</b></p><br>
+                    <P> A friendly trained Ollama chatbot that is knowledgeable in linear, and binary search algorithms, 
+                        regarding its history, sample codes, application, and such.</p>
+                </div>
+                <div class="Algo-content">
+                    <button id="Activity-5"><b><a href="{{ url_for('activity5') }}">View</a></b></button>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
